@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+.top-bar{
+background-image: url("../lim-imgs/top-bar1.jpg");
+margin-top:2px;
+margin-left:2px;
+margin-right:2px;
+height: 66px;
+width: 1360px;
+z-index: 1;
+}
+.top-bar-menu{
+	float: right;
+	margin-right: 100px;
+	margin-top: 20px;
+	color: red;
+	font-size: 22px;
+	font-weight: bolder; 
+	cursor: pointer;
+	z-index: 1;
+}
+.top-bar-menu-logout{
+float: right;
+}
+.login-window{
+z-index: 20;
+top:0px;left:0px;width:100%;height:100%;
+position:absolute;
+}
+.close{
+background-image: url("../lim-imgs/button.png");
+background-position: 70px 0px;
+}

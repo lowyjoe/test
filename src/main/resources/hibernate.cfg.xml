@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+<!-- 设置数据库的连接信息Database connection settings -->
+ <!-- 指定数据库所用的驱动 -->
+ <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+ <!-- 指定连接数据库的url，Hibernate连接的数据库名 -->
+ <property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+ <!-- 指定数据库的用户名和密码 -->
+ <property name="connection.username">scott</property>
+ <property name="connection.password">tiger</property>
+ <!-- C3P0 connection pool  -->
+ <property name="hibernate.c3p0.max_size">500</property>
+ <property name="hibernate.c3p0.min_size">2</property>
+ <property name="hibernate.c3p0.timeout">5000</property>
+ <property name="hibernate.c3p0.max_statements">100</property>
+ <property name="hibernate.c3p0.idle_test_period">3000</property>
+ <property name="hibernate.c3p0.acquire_increment">2</property>
+ <property name="hibernate.c3p0.validate">true</property>
+ <!-- 设置Sql方言SQL dialect -->
+ <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+
+ <!-- Echo all executed SQL to stdout -->
+ <property name="show_sql">true</property>
+<!--  validate               加载hibernate时，验证创建数据库表结构
+create                  每次加载hibernate，重新创建数据库表结构，这就是导致数据库表数据丢失的原因。
+create-drop        加载hibernate时创建，退出是删除表结构
+update                 加载hibernate自动更新数据库结构
+如果不是此方面的需求建议set value="none". -->
+ <property name="hbm2ddl.auto" >none</property>
+  <!-- 罗列Hibernate的全部映射文件 -->
+<mapping class="com.lim.entity.PersonEntity"/>
+    </session-factory>
+</hibernate-configuration>

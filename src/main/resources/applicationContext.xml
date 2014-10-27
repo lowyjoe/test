@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置系统基础环境 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- SpringJDBC 数据源配置 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>  
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>  
+        <property name="username" value="scott"/>  
+        <property name="password" value="tiger"/> 
+    </bean>
+	<!-- Action  -->
+	<bean id="userAction" class="com.lim.action.UserAction" ></bean>
+	<bean id="EasyFindByKey" class="com.lim.action.EasyFindByKey" >
+		<property name="dao" ref="TreeDao"></property>
+	</bean>
+	<bean id="EasyTongBuShu" class="com.lim.action.EasyTongBuShu" >
+		<property name="dao" ref="TreeDao"></property>
+	</bean>
+	<bean id="EasyTreeAdd" class="com.lim.action.EasyTreeAdd" >
+		<property name="dao" ref="TreeDao"></property>
+	</bean>
+	<bean id="EasyTreeDel" class="com.lim.action.EasyTreeDel" >
+		<property name="dao" ref="TreeDao"></property>
+	</bean>
+	<bean id="EasyTreeEdite" class="com.lim.action.EasyTreeEdite" >
+		<property name="dao" ref="TreeDao"></property></bean>
+	<bean id="EasyTreeQuery" class="com.lim.action.EasyTreeQuery" >
+		<property name="dao" ref="TreeDao"></property>
+	</bean>
+	<!--Dao 配置myJdbc -->  
+    <bean id="myJdbc" class="com.lim.dao.MyJdbc">  
+        <property name="dataSource">
+         <ref local="dataSource"/>
+        </property>  
+    </bean>  
+    <bean id="TreeDao" class="com.lim.dao.TreeDao">  
+         <property name="dataSource">
+         <ref local="dataSource"/>
+        </property>  
+    </bean>  
+ 
+	<!-- <bean id="gzclQuartz" class="cn.cntomorrow.ifm.quartz.GzclQuartz">
+	  <property name="gzclDao" ref="gzclDao"></property>  
+	 <property name="selectItemDao" ref="selectItemDaoImpl"></property>
+	</bean> -->
+</beans>
